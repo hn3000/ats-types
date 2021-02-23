@@ -1,0 +1,13 @@
+{
+  "name": "@hn3000/ats-types",
+  "version": "0.0.1",
+  "description": "",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": { "url": "https://github.com/hn3000/ats-types" }
+}
