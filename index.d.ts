@@ -28,8 +28,8 @@ declare type TPlatform = "OC" | "ST";
 declare interface ITempoSection {
   startTimeInSeconds: number;
   beatsPerMeasure: number; // integer
-  beatsPerMinute: 120.0;
-  doesStartNewMeasure: true;
+  beatsPerMinute: number; // 120.0;
+  doesStartNewMeasure: true; // "recommended value"
 }
 
 declare type TSongEventType =
@@ -157,7 +157,8 @@ declare interface ISongEvent {
    * 5: "{\"idMask\":134217728,\"color\":{\"r\":0.0,\"g\":1.458823561668396,\"b\":1.4980392456054688,\"a\":1.0}}" (in Lit-Close, Lit-Far, Lit-Spots)
    * 6:
    * 8: "{\"group\":\"assemble 1\",\"obj\":\"assembling gate\",\"idMask\":1,\"zOffset\":NaN}" (in Gen-Fast)
-   *    "{\"group\":\"gotcha\",\"obj\":\"gate_beat\",\"idMask\":0,\"zOffset\":NaN}" in Gen-Intense
+   *    "{\"group\":\"gotcha\",\"obj\":\"gate_beat\",\"idMask\":0,\"zOffset\":NaN}" (in Gen-Intense)
+   * 9: 
    * 11: "{\"clipName\":\"assembleccw\",\"beatSpan\":2.0,\"wrapMode\":8,\"idMask\":4}" (in Animations)
    * 12: "{\"start\":{\"r\":0.0,\"g\":1.4588240385055543,\"b\":1.4980000257492066,\"a\":1.0},\"end\":{\"r\":0.0,\"g\":0.9647058844566345,\"b\":1.0,\"a\":1.0},\"duration\":0.0,\"idMask\":0}" (in Lit-Close, Lit-Far)
    */
@@ -302,29 +303,48 @@ declare interface AudioTripSong {
     sceneName: TSceneName;
     avgBPM: number; // can also be the literal NaN which must be replaced before file can be parsed
 
-    /** This is a list of one or more “tempo sections” which define the beats per minute and beats per measure of a region of the song.*/
+    /** 
+     * This is a list of one or more “tempo sections” which define the 
+     * beats per minute and beats per measure of a region of the song.*/
     tempoSections: ITempoSection[];
     
-    /** An array of event tracks, each containing one or more events. This is mostly only used internally to Audio Trip, but is used for many things, such as triggering environmental effects. In some song scenes, the environmental objects listen for events on specifically named tracks, such as “BeatsAll” which is a list of all the beats the song should emphasize visually. */
+    /** 
+     * An array of event tracks, each containing one or more events. This is 
+     * mostly only used internally to Audio Trip, but is used for many things, 
+     * such as triggering environmental effects. In some song scenes, the 
+     * environmental objects listen for events on specifically named tracks,
+     * such as “BeatsAll” which is a list of all the beats the song should 
+     * emphasize visually. */
     songEventTracks: ISongEventTrack[];
-    firstBeatTimeInSeconds: 0.0; // redundant with "First Beat" event track?
+
+    /** 
+     * The number of seconds into the .ogg file the song should actually begin 
+     * playing. This is also the earliest point you can author any choreography. 
+     * It is recommended that you place at least a couple of seconds between 
+     * where the song begins playing and the first choreography so that the 
+     * player has some time to get ready. */
+    firstBeatTimeInSeconds: number; // 0.0; 
     songEndTimeInSeconds: 0.0; // redundant with "Song End" event track?
-    songShortStartTimeInSeconds: -1.0; // redundant with "Short Start" event track?
-    songShortStopTimeInSeconds: -1.0; // redundant with "Short End" event track?
+    songShortStartTimeInSeconds: -1.0; // Not used for custom songs. redundant with "Short Start" event track?
+    songShortStopTimeInSeconds: -1.0; // Not used for custom songs. redundant with "Short End" event track?
+    
     /**  The length of the song, in seconds (used to display the song length in the UI) */
-    songFullLengthInSeconds: 164.70587158203126;
-    songShortLengthInSeconds: 80.0;
-    songStartFadeTime: 5.0;
-    songEndFadeTime: 5.0;
-    previewStartInSeconds: 124.0;
-    previewDurationInSeconds: 10.0;
-    songStartBufferInSeconds: 0.0;
+    songFullLengthInSeconds: number; // 164.70587158203126;
+    songShortLengthInSeconds: number; // 80.0;
+    songStartFadeTime: number; // 5.0;
+    songEndFadeTime: number; // 5.0;
+
+    /** Start time in song for preview in hub world. */
+    previewStartInSeconds: number; // 124.0;
+    /** Duration of preview for hub world. */
+    previewDurationInSeconds: number; // 10.0;
+    songStartBufferInSeconds: number; // unused or internal, 0.0;
     choreoJSONs: [];
     animClips: [];
-    speed: -60.0;
-    quantizeSize: 0.20000000298023225;
+    speed: number; // unused;
+    quantizeSize: number; // 0.20000000298023225;
     includeInArcades: true;
-    supportedModalitySets: 2;
+    supportedModalitySets: 2; // only known valid value, for now
   };
 
   choreographies: IChoreography[];
