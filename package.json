@@ -1,13 +1,19 @@
 {
   "name": "@hn3000/ats-types",
-  "version": "0.0.1",
-  "description": "",
-  "types": "index.d.ts",
+  "version": "0.0.2",
+  "description": "Types describing ATS types for the VR game Audio Trip",
+  "types": "out/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tsc": "tsc",
+    "prepare": "tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "repository": { "url": "https://github.com/hn3000/ats-types" }
+  "repository": {
+    "url": "https://github.com/hn3000/ats-types"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.3"
+  }
 }

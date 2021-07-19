@@ -9,12 +9,43 @@ or gleaned from inspection of saved choreographies.
 
 ## Use
 
+Install the library into your project with npm or yarn
 ```
 npm add https://github.com/hn3000/ats-types
 ```
+```
+yarn add https://github.com/hn3000/ats-types
+```
 
+Import the types into your .ts or .tsx file
 ```
 import * as ATS from '@hn3000/ats-types';
 ```
 
-(I think.)
+And use the types to handle parsed Audio Trip Song files
+```
+function somethingSomething(song: ATS.AudioTripSong) {
+  const id = song.metadata.songID;
+  ...
+}
+```
+
+I use this utility function to parse the .ats which mostly is valid JSON,
+with the exception of some cases where NaN is used instead of a valid number.
+```
+import { AudioTripSong } from '@hn3000/ats-types';
+
+export const BPM_NAN_BPM = -667; // neighbor of the beast -- marker for later
+export function fixNaN(json: string) {
+  return json.replace(/NaN/, `${BPM_NAN_BPM}`);
+}
+
+export function parseSongFile(chars: string, fn: string): AudioTripSong {
+  try {
+    return JSON.parse(fixNaN(chars));
+  } catch (x) {
+    console.log(`could not parse song file ${fn}, got ${x}`);
+  }
+
+}
+```

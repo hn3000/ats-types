@@ -4,7 +4,7 @@
   and gleaned from inspection of saved choreographies
 */
 
-declare type TSceneName =
+export type TSceneName =
   | "Addicted To A Memory"
   | "Anemone"
   | "Bangarang"
@@ -23,16 +23,16 @@ declare type TSceneName =
   | "Universal" // (generic scene that is made to work with any song)
   | "WorldGen"; // (multi-purpose scene that contains environmental elements that can be spawned and driven by our new, as yet undocumented environment system)
 
-declare type TPlatform = "OC" | "ST";
+export type TPlatform = "OC" | "ST";
 
-declare interface ITempoSection {
+export interface ITempoSection {
   startTimeInSeconds: number;
   beatsPerMeasure: number; // integer
   beatsPerMinute: number; // 120.0;
   doesStartNewMeasure: true; // "recommended value"
 }
 
-declare type TSongEventType =
+export type TSongEventType =
   // these look like song-related meta-events (they occur everywhere)
   | "First Beat"
   | "Short Start"
@@ -138,7 +138,7 @@ declare type TSongEventType =
   | "wooh"
   | "woowoo";
 
-declare interface ISongEvent {
+export interface ISongEvent {
   startTimeInSeconds: number;
   endTimeInSeconds: number;
 
@@ -165,7 +165,7 @@ declare interface ISongEvent {
   payload: string;
 }
 
-declare interface ISongEventTrack {
+export interface ISongEventTrack {
   /** The name/ID of the track. Possible values were collected from cloned built-in choreos. */
   eventID: TSongEventType;
 
@@ -179,7 +179,7 @@ declare interface ISongEventTrack {
  * ( https://en.wikipedia.org/wiki/Fraction#Mixed_numbers ) 
  * where the fractional part is simplified (reduced) as much as possible.
  */
-declare interface IBeatTime {
+export interface IBeatTime {
   /** An integer value indicating the beat number, in whole beats */
   beat: number;
 
@@ -190,7 +190,7 @@ declare interface IBeatTime {
   denominator: number;
 }
 
-declare interface IChoreoEvent {
+export interface IChoreoEvent {
   /**
    * 0: Barrier
    * 1: Left-hand Gem
@@ -211,7 +211,30 @@ declare interface IChoreoEvent {
   time: IBeatTime;
 
   /** The beat division at which this event was recorded (i.e. 1 = whole beat, 2 = half beat, 4 = quarter beat, etc), important mainly for Ribbons. */
-  beatDivision: number; 
+  beatDivision: number;
+
+  /**
+   * Position of Gem in the 2D plane at `time`
+   * Coordinates are in meters for a reference dancer of approx. 1.55m height
+   * - x = 0 is center, negative is left, positive is right
+   * - y = 0 is floor level, positive numbers are above floor
+   * - z is usually 0
+   * 
+   * For Ribbons, only the entry point is positioned using the position,
+   * everything after is relatively positioned using the `subPositions`
+   * array.
+   * 
+   * For barriers (type=0), coordinates are used differently:
+   * - x ignored for barriers
+   * - y distance of the positioning reference point (not the bottom of the barrier) from x=0,y=0
+   * - z rotation in degrees around x=0,y=0, applied after the y offset
+   * 
+   */
+  position: {
+    x: number;
+    y: number;
+    z: number;
+  }
 
   /**
    *  Array of additional positions associated with this event. For Drums and 
@@ -238,7 +261,7 @@ declare interface IChoreoEvent {
   broadcastEventID: number;
 }
 
-declare interface IChoreography {
+export interface IChoreography {
   header: {
     id: string; // Hash value automatically filled in by Audio Trip, leave empty
     /** Descriptive Name, e.g. Beginner, Regular, Expert -- can be anything */
@@ -256,7 +279,7 @@ declare interface IChoreography {
   }
 }
 
-declare interface AudioTripSong {
+export interface AudioTripSong {
   metadata: {
     custom: boolean;
     authorID: {
@@ -271,15 +294,17 @@ declare interface AudioTripSong {
     /** 
      * Hash for the song, leave empty when songFilename given (Audio Trip will calculate the hash)
      * Specific values for built-in songs:
-     * - "1" - Anemone, Naden
-     * - "2" - Bangarang, Skrillex
-     * - "3" - Addicted To A Memory, Zedd
-     * - "4" - Jurassic Snack Pack, PrototypeRaptor
-     * - "5" - Mandala, Blastoyz
-     * - "6" - 
-     * - "7" - Sofi Needs A Ladder, deadmau5
-     * - "8" - Just Dance, Lady Gaga
-     * - "9" - Drift, Rafaël Frost
+     * - "00" - Flying Noodles
+     * - "0"  - 
+     * - "1"  - Anemone, Naden
+     * - "2"  - Bangarang, Skrillex
+     * - "3"  - Addicted To A Memory, Zedd
+     * - "4"  - Jurassic Snack Pack, PrototypeRaptor
+     * - "5"  - Mandala, Blastoyz
+     * - "6"  - 
+     * - "7"  - Sofi Needs A Ladder, deadmau5
+     * - "8"  - Just Dance, Lady Gaga
+     * - "9"  - Drift, Rafaël Frost
      * - "10" - Show Me, Tiësto, DallasK
      * - "11" - Golden Pineapple, Tolan,
      * - "12" - X-TYPE, I KILL PXLS
@@ -347,5 +372,7 @@ declare interface AudioTripSong {
     supportedModalitySets: 2; // only known valid value, for now
   };
 
-  choreographies: IChoreography[];
+  choreographies: {
+    list: IChoreography[];
+  }
 }

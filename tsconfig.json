@@ -1,0 +1,9 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "declaration": true,
+    "removeComments": false,
+    "outDir": "out",    
+  }
+}
