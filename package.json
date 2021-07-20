@@ -2,7 +2,7 @@
   "name": "@hn3000/ats-types",
   "version": "0.0.2",
   "description": "Types describing ATS types for the VR game Audio Trip",
-  "types": "out/index.d.ts",
+  "types": "index.d.ts",
   "scripts": {
     "tsc": "tsc",
     "prepare": "tsc"

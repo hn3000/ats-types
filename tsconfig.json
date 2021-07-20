@@ -4,6 +4,7 @@
     "alwaysStrict": true,
     "declaration": true,
     "removeComments": false,
-    "outDir": "out",    
-  }
+    "outDir": "out",
+  },
+  "include": [ "index.d.ts" ]
 }

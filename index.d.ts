@@ -4,7 +4,7 @@
   and gleaned from inspection of saved choreographies
 */
 
-export type TSceneName =
+export declare type TSceneName =
   | "Addicted To A Memory"
   | "Anemone"
   | "Bangarang"
@@ -23,7 +23,7 @@ export type TSceneName =
   | "Universal" // (generic scene that is made to work with any song)
   | "WorldGen"; // (multi-purpose scene that contains environmental elements that can be spawned and driven by our new, as yet undocumented environment system)
 
-export type TPlatform = "OC" | "ST";
+export declare type TPlatform = "OC" | "ST";
 
 export interface ITempoSection {
   startTimeInSeconds: number;
@@ -32,7 +32,7 @@ export interface ITempoSection {
   doesStartNewMeasure: true; // "recommended value"
 }
 
-export type TSongEventType =
+export declare type TSongEventType =
   // these look like song-related meta-events (they occur everywhere)
   | "First Beat"
   | "Short Start"
