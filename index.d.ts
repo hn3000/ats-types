@@ -38,6 +38,8 @@ export declare type TSongEventType =
   | "Short Start"
   | "Short Stop"
   | "Song End"
+  // Lyrics events
+  | "Lyrics" // takes payload type 4 (string) with the text to be shown
   // these are from sceneName: WorldGen choreos
   | "Animations"
   | "Gen-Fast"
@@ -138,6 +140,32 @@ export declare type TSongEventType =
   | "wooh"
   | "woowoo";
 
+
+/** 
+ * Single Entry on an event track, can have a duration and a payload that
+ * is encoded as string, but may undergo additional decoding before use.
+ * 
+ * Events that don't need a duration have `endTimeInSeconds` identical to
+ * `startTimeInSeconds`.
+ * 
+ * Example of a "Lyrics" event track:
+ * 
+```
+    "songEventTracks": [
+        {
+            "eventID": "Lyrics",
+            "events": [
+                {
+                    "startTimeInSeconds": 5.0,
+                    "endTimeInSeconds": 10,
+                    "payloadType": 4,
+                    "payload": "TEMPLATE"
+                }
+            ]
+        }
+    ]
+```
+ */
 export interface ISongEvent {
   startTimeInSeconds: number;
   endTimeInSeconds: number;
