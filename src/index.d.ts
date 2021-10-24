@@ -194,11 +194,15 @@ export interface ISongEvent {
 }
 
 export interface ISongEventTrack {
-  /** The name/ID of the track. Possible values were collected from cloned built-in choreos. */
+  /** 
+   * The name/ID of the track. Possible values were collected from cloned built-in choreos.
+   * 
+   * see docs/song-event-tracks.md for more details.
+   */
   eventID: TSongEventType;
 
   /** List of events in this track. */
-  events: ISongEvent[]; // todo: model dependency of SongEvent.payloadType and eventID
+  events: ISongEvent[]; // todo: model how eventID determines SongEvent.payloadType and payload contents
 }
 
 /** 
@@ -367,7 +371,10 @@ export interface AudioTripSong {
      * such as triggering environmental effects. In some song scenes, the 
      * environmental objects listen for events on specifically named tracks,
      * such as “BeatsAll” which is a list of all the beats the song should 
-     * emphasize visually. */
+     * emphasize visually. 
+     * 
+     * see docs/song-event-tracks for notes about these
+     * */
     songEventTracks: ISongEventTrack[];
 
     /** 
@@ -386,6 +393,15 @@ export interface AudioTripSong {
     songShortLengthInSeconds: number; // 80.0;
     songStartFadeTime: number; // 5.0;
     songEndFadeTime: number; // 5.0;
+
+    /**
+     * Extra silence at start of track 
+     * 
+     * Word of Dev:
+     * "Any events at the very start of the song will get fired, so any skybox 
+     * setup, etc, done at the beginning of the song will get set."
+     */
+    leadingSilenceSeconds: number; // only AT versions after 2021-10-24, adds extra silence at start of track
 
     /** Start time in song for preview in hub world. */
     previewStartInSeconds: number; // 124.0;

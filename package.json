@@ -1,8 +1,19 @@
 {
   "name": "@hn3000/ats-types",
-  "version": "0.0.3",
-  "description": "Types describing ATS types for the VR game Audio Trip",
-  "types": "index.d.ts",
+  "version": "0.1.0",
+  "description": "Types describing files and stats-server output for the VR game Audio Trip by Kinemotik, ",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": "./src/index.js",
+    "./*": "./src/*.js"
+  },
+  "typesVersions": {
+    "*": {
+      "./index.js": ["./src/index.d.ts"],
+      "./*": ["./src/*.d.ts"]
+    }
+  },
   "scripts": {
     "tsc": "tsc",
     "prepare": "tsc"
@@ -14,6 +25,6 @@
     "url": "https://github.com/hn3000/ats-types"
   },
   "devDependencies": {
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.3"
   }
 }
