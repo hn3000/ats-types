@@ -14,7 +14,7 @@
  * <https://docs.google.com/document/u/1/d/e/2PACX-1vToN_yrZhGHgy7I_tBoDIAzLHHYlwodwjaXI3VnUXR0a8UEEH0JmjffGx4t8nXxw962gvWrXeXDOcGJ/pub>
  */
 
-export type StatsServerResponse = IStatsServerIdle | IStatsServerSongInfo;
+export type StatsServerPayload = IStatsServerIdle | IStatsServerSongInfo;
 export interface IStatsServerIdle {
   "gameVersion": string; "1.0.3046";
   "inSong": false;
