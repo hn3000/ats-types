@@ -1,0 +1,5 @@
+// haven't gotten this to work, yet, but 
+// according to word-of-dev, this is the format:
+ip: 192.168.178.123 // The IP to listen on
+port: 4154 // The port to listen on (this one's a joke: A=0x41, T=0x54)
+rate: 0.1 // How long between refreshes (in seconds)

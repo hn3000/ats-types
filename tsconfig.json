@@ -8,5 +8,5 @@
     "moduleResolution": "node",
     "rootDir": ".",
   },
-  "include": [ "src/*.d.ts", "test/*.ts", "src/stats-server.d.ts" ]
+  "include": [ "src/*.d.ts", "test/*.ts", "src/stat-server.d.ts" ]
 }

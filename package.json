@@ -4,14 +4,13 @@
   "description": "Types describing files and stats-server output for the VR game Audio Trip by Kinemotik, ",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
-  "exports": {
-    ".": "./src/index.js",
-    "./*": "./src/*.js"
-  },
+  "type":"module",
   "typesVersions": {
     "*": {
       "./index.js": ["./src/index.d.ts"],
-      "./*": ["./src/*.d.ts"]
+      "./ats": ["./src/ats.d.ts"],
+      "./atl": ["./src/atl.d.ts"],
+      "./stat-server": ["./src/stat-server.d.ts"]
     }
   },
   "scripts": {

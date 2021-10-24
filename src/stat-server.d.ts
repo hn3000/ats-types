@@ -6,7 +6,7 @@
  * ```
  * ip: <ip address> // The IP to listen on
  * port: 1234 // The port to listen on
- * rate: 0.05 // How long between refreshes (in seconds)
+ * rate: 0.1 // How long between refreshes (in seconds)
  * ```
  * 
  * If you're building an Overlay for OBS, you may also want to use info from
