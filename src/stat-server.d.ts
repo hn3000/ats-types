@@ -9,6 +9,18 @@
  * rate: 0.1 // How long between refreshes (in seconds)
  * ```
  * 
+ * Note: currently the file must not have a newline after the third line.
+ * 
+ * A very simple configuration is also possible:
+ * 
+ * ```
+ * ip: 0.0.0.0
+ * ```
+ * 
+ * And this minimum is required on Quest, because the server won't run without
+ * a file and it won't be reachable from outside if not configured to an 
+ * external ip of the Quest or 0.0.0.0 (which means **use all external IPs**).
+ * 
  * If you're building an Overlay for OBS, you may also want to use info from
  * the Audio Trip Branding guide at
  * <https://docs.google.com/document/u/1/d/e/2PACX-1vToN_yrZhGHgy7I_tBoDIAzLHHYlwodwjaXI3VnUXR0a8UEEH0JmjffGx4t8nXxw962gvWrXeXDOcGJ/pub>
@@ -16,7 +28,7 @@
 
 export type StatsServerPayload = IStatsServerIdle | IStatsServerSongInfo;
 export interface IStatsServerIdle {
-  "gameVersion": string; "1.0.3046";
+  "gameVersion": string; // e.g. "1.0.3066";
   "inSong": false;
 }
 
@@ -27,9 +39,9 @@ export enum PlayerStatus {
 }
 
 export enum TripType {
-  QuickTrip = 0,
-  FullTrip = 1,
-  Custom = 2,
+  QuickTrip = "QuickTrip",
+  FullTrip = "FullTrip",
+  Custom = "Custom",
 }
 export interface IStatsServerSongInfo {
   "gameVersion": string;               // "1.0.3046",
@@ -45,4 +57,8 @@ export interface IStatsServerSongInfo {
   "songArtist": string;                // e.g. "Skrillex",
   "choreoName": string;                // e.g. "CARDIO",
   "choreographer": string;             // e.g. "Kinemotik Studios" // User name of choreographer
+
+  /* these IDs can be used to find the corresponding choreo file or create playlists: */
+  "songID": string;        // same as in .ats file, short numeric IDs are used for early OST songs
+  "choreoID": string;      // same as in .ats file
 }

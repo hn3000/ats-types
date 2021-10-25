@@ -5,7 +5,14 @@ To support OBS overlays written in HTML, the game opens a WebSocketServer
 on port 48998 and only reachable from the same machine, on 127.0.0.1 .
 (The url is ws://127.0.0.1/ -- you can add a path after that, but it does not matter.)
 
+Only one connection to the WebSocketServer is supported
+at this time.
+
 ## Status Data
+
+Once you're connected to the game, regular messages will
+arrive on the WebSocket connection. The messages are encoded
+as JSON and can be parsed using the standard JSON object.
 
 While in the hub world, the socket will send out status messages like this:
 
@@ -34,16 +41,16 @@ While a song is playing, the messages look like this:
    "score": 9026,
    "multiplier": 1,
    "playerHealth": -1,
-   "curSongTime": 105.119
+   -"curSongTime": 105.119
 }
 ```
-
 
 * `"tripType"` will be `"QuickTrip"`, `"FullTrip"` or `"Custom"`.
 
 * `"playerStatus"` will be one of `"Playing"`, `"Finished"` or `"Failed"`.
 
 * `"playerHealth"` is either `-1` (in "No Fail" mode) or a value between `0` and `1`.
+
 
 ## Configuration
 
@@ -67,7 +74,7 @@ otherwise the file will not be recognized.
 For the Oculus Quest (or Quest 2 and other Android-based headsets), the file
 must be present because the WebSocketServer will not be usable (and therefore 
 not run) on these platforms unless the ip is set to a value other than 
-`127.0.0.1`. (The game checks if the file exists, but ip: 127.0.0.1 would only
+`127.0.0.1`. (The game checks if the file exists, but `ip: 127.0.0.1` would only
 be reachable on the headset itself and not be very useful.)
 
 To make the server available on a standalone headset, this configuration
