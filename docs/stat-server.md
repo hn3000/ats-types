@@ -68,9 +68,6 @@ port: 48998
 rate: 0.01
 ```
 
-Note that there should be no newline or line break after the third line, 
-otherwise the file will not be recognized.
-
 For the Oculus Quest (or Quest 2 and other Android-based headsets), the file
 must be present because the WebSocketServer will not be usable (and therefore 
 not run) on these platforms unless the ip is set to a value other than 

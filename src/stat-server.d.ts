@@ -44,7 +44,7 @@ export enum TripType {
   Custom = "Custom",
 }
 export interface IStatsServerSongInfo {
-  "gameVersion": string;               // "1.0.3046",
+  "gameVersion": string;               // "1.0.3068",
   "inSong": true,
   "playerStatus": PlayerStatus;        // 0=Playing, 1=Failed, 2=Finished
   "score": number;                     // e.g. 500000;
