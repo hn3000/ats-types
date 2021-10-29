@@ -7,6 +7,10 @@
     "outDir": "out",
     "moduleResolution": "node",
     "rootDir": ".",
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "target": "es2017",
+    "allowSyntheticDefaultImports": true,
   },
-  "include": [ "src/*.d.ts", "test/*.ts", "src/stat-server.d.ts" ]
+  "include": [ "src/*.ts", "test/*.ts" ]
 }

@@ -32,18 +32,19 @@ export interface IStatsServerIdle {
   "inSong": false;
 }
 
-export enum PlayerStatus {
-  Playing = "Playing",
-  Failed = "Failed",
-  Finished = "Finished",
-}
+export type PlayerStatus = 
+  | "Playing"
+  |  "Failed"
+  |  "Finished"
+  ;
 
-export enum TripType {
-  QuickTrip = "QuickTrip",
-  FullTrip = "FullTrip",
-  Custom = "Custom",
-}
-export interface IStatsServerSongInfo {
+export type TripType =
+  | "QuickTrip"
+  | "FullTrip"
+  | "Custom"
+  ;
+
+  export interface IStatsServerSongInfo {
   "gameVersion": string;               // "1.0.3068",
   "inSong": true,
   "playerStatus": PlayerStatus;        // 0=Playing, 1=Failed, 2=Finished

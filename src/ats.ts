@@ -327,24 +327,28 @@ export interface AudioTripSong {
      * Hash for the song, leave empty when songFilename given (Audio Trip will calculate the hash)
      * Specific values for built-in songs:
      * - "00" - Flying Noodles
-     * - "0"  - 
+     * - "0"  - Red, Rafaël Frost
      * - "1"  - Anemone, Naden
      * - "2"  - Bangarang, Skrillex
      * - "3"  - Addicted To A Memory, Zedd
      * - "4"  - Jurassic Snack Pack, PrototypeRaptor
      * - "5"  - Mandala, Blastoyz
-     * - "6"  - 
+     * - "6"  - Satisfaction, Benny Benassi
      * - "7"  - Sofi Needs A Ladder, deadmau5
      * - "8"  - Just Dance, Lady Gaga
      * - "9"  - Drift, Rafaël Frost
      * - "10" - Show Me, Tiësto, DallasK
      * - "11" - Golden Pineapple, Tolan,
      * - "12" - X-TYPE, I KILL PXLS
-     * - "13"
-     * - "14"
+     * - "13" -
+     * - "14" -
      * - "15" - Can't Take It (pt2), Hot Rod Elegants
      * - "16" - Freedom, The Originals
      * - "17" - Keep My Cool, Benj Heard
+     * - "18"- 
+     * - "19" - SIDthesize
+     * - "20" - Makamba
+     * - "21" - Gangnam Style
      * 
      * - "b983058f6236549d08f6d371044826da29bca4bd8d8b0f52073731112659109e" - Dance Monkey, Tones And I
      * - "1a6e5b76b8bc68e311965123ae9f7adb670c1069b47884fc68d85b5adb823ea1" - Krishna, Dropgun

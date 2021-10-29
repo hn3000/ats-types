@@ -2,20 +2,29 @@
   "name": "@hn3000/ats-types",
   "version": "0.1.0",
   "description": "Types describing files and stats-server output for the VR game Audio Trip by Kinemotik, ",
-  "main": "./src/index.js",
-  "types": "./src/index.d.ts",
-  "type":"module",
+  "main": "./out/src/index.js",
+  "types": "./out/src/index.d.ts",
+  "type": "module",
   "typesVersions": {
     "*": {
-      "./index.js": ["./src/index.d.ts"],
-      "./ats": ["./src/ats.d.ts"],
-      "./atl": ["./src/atl.d.ts"],
-      "./stat-server": ["./src/stat-server.d.ts"]
+      "./index.js": [
+        "./out/src/index.d.ts"
+      ],
+      "./ats": [
+        "./out/src/ats.d.ts"
+      ],
+      "./atl": [
+        "./out/src/atl.d.ts"
+      ],
+      "./stat-server": [
+        "./out/src/stat-server.d.ts"
+      ]
     }
   },
   "scripts": {
     "tsc": "tsc",
-    "prepare": "tsc"
+    "prepare": "tsc",
+    "convert-atl": "node --experimental-json-modules --loader ts-node/esm tools/convert-atl.ts"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +33,10 @@
     "url": "https://github.com/hn3000/ats-types"
   },
   "devDependencies": {
-    "typescript": "^4.4.3"
+    "typescript": "^4.4.4",
+    "ts-node": "10.4.0"
+  },
+  "dependencies": {
+    "@types/node": "^16.11.6"
   }
 }
