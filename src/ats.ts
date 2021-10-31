@@ -23,7 +23,13 @@ export declare type TSceneName =
   | "Universal" // (generic scene that is made to work with any song)
   | "WorldGen"; // (multi-purpose scene that contains environmental elements that can be spawned and driven by our new, as yet undocumented environment system)
 
-export declare type TPlatform = "OC" | "ST";
+/**
+ * Platforms:
+ * - OC Oculus
+ * - ST Steam
+ * - VP ??
+ */
+export declare type TPlatform = "OC" | "ST" | "VP";
 
 export interface ITempoSection {
   startTimeInSeconds: number;
