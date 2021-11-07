@@ -27,7 +27,7 @@ export declare type TSceneName =
  * Platforms:
  * - OC Oculus
  * - ST Steam
- * - VP ??
+ * - VP VivePort
  */
 export declare type TPlatform = "OC" | "ST" | "VP";
 
