@@ -41,7 +41,7 @@ While a song is playing, the messages look like this:
    "score": 9026,
    "multiplier": 1,
    "playerHealth": -1,
-   -"curSongTime": 105.119
+   "curSongTime": 105.119
 }
 ```
 
