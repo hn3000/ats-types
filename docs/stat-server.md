@@ -65,8 +65,12 @@ The `StatServer.cfg` file looks like this:
 ```StatServer.cfg
 ip: 127.0.0.1
 port: 48998
-rate: 0.01
+rate: 0.1
 ```
+
+If the game slows down while the WebSocket Server is in use, you
+can try to enter a higher value for rate (it's given in seconds between
+packets).
 
 For the Oculus Quest (or Quest 2 and other Android-based headsets), the file
 must be present because the WebSocketServer will not be usable (and therefore 
@@ -84,6 +88,17 @@ ip: 0.0.0.0
 The value `0.0.0.0` makes the WebSocketServer available on every network the
 headset is connected to, so if you're playing on public Wifi networks, you may
 not want to use this configuration.
+
+If you also want to specify port and rate, the file would look like this:
+
+```StatServer.cfg
+ip: 0.0.0.0
+port: 48998
+rate: 0.1
+```
+
+But again, be aware that this allows connections from other devices on the
+same network, so don't use this on public Wifi.
 
 To connect to the WebSocketServer for a Quest or other headset, you need to
 obtain the IP address of the headset. This can be done using SideQuest (it
