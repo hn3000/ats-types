@@ -78,6 +78,13 @@ track where both start and end times are important. Most other tracks just treat
 events as one-time momentary things, and the start and end times are usually
 identical.
 
+Note: In a [discussion on the ATCD](https://discord.com/channels/734199944130592818/734200516099309619/1118669371011768500) ,
+champfriend describes an issue where differing values for `startTimeInSeconds`
+and `endTimeInSeconds` cause performance problems. He credits user @Billiegorgon
+for identifying this as the cause of the problems. Unless/until the issue is 
+fixed in Audio Trip, it's probably best to always use the exact same values for
+both fields unless they are used in a "Staging" track as described above.
+
 ### Gen-X
 
 The generation tracks use an `ATSpawnPayload` which specifies which object to
