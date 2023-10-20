@@ -299,6 +299,14 @@ export interface IChoreoEvent {
   broadcastEventID: number;
 }
 
+export enum ChoreoTypeEnum {
+  Generic = 0,
+  Beginner = 1,
+  Regular = 2,
+  Expert = 3,
+  Cardio = 4,
+}
+
 export interface IChoreography {
   header: {
     id: string; // Hash value automatically filled in by Audio Trip, leave empty
@@ -310,6 +318,16 @@ export interface IChoreography {
 
     /** Speed of Gems in m/s. Usual values are: Beginner - 15, Regular - 20, Expert - 30 */
     gemSpeed: number; 
+
+    /** Type of choreo, difficulty mapped to integer values: */
+    choreoType: ChoreoTypeEnum; // 0 - Generic, 1 - Beginner, 2 - Regular, 3 - Expert, 4 - Cardio
+
+    /* observed in the wild: */
+    gemRadius: number; // always 1.0?
+    handRadius: number; // always 0.27000001072883608?
+    animClipPath: string; // always ""
+    buildVersion: string; // always ""
+    requiredModalities: number; // always 2?
   };
 
   data: {
